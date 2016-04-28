@@ -1,0 +1,13 @@
+-->SQL Database Creation steps
+CREATE DATABASE BlogWebsite;
+USE BlogWebsite
+CREATE TABLE Users (id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+UserName VARCHAR(20),
+Password VARCHAR(20),
+confirmed CHAR(1),
+signup_date DATE);
+
+-->Example User Insert
+INSERT INTO Users (id,UserName,Password,confirmed,signup_date) VALUES (NULL, "Diego", "Soliz","Y", '2016-04-27');
+
+-->DELETE FROM Users WHERE id=some_value;
