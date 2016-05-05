@@ -31,7 +31,7 @@ if(isset($_POST['signup_button'])){
 
 		if ($checkDuplicate->num_rows === 0){
 
-			$insertquery = "INSERT INTO Blog_Users (ID,UserName,Password,signup_date) VALUES (NULL, '$usr', '$pass', NOW())";
+			$insertquery = "INSERT INTO BlogUsers (UserName,Password,signup_date) VALUES ('$usr', '$pass', NOW())";
 
 			if ($mysqli->query($insertquery) === TRUE) {
 				echo "Success!";
