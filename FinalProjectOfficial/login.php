@@ -22,7 +22,7 @@
 			exit();
 		}
 
-		$myquery = "SELECT UserName FROM BlogUsers WHERE UserName = '$usr' and Password = '$pass'";
+		$myquery = $mysqli->query("SELECT UserName FROM BlogUsers WHERE UserName = '$usr' and Password = '$pass'");
 
 		if ($myquery->num_rows === 1){
 			$_SESSION['login_user'] = $usr;
