@@ -41,7 +41,7 @@ if(isset($_POST['signup_button'])){
 			}
 		}
 		else {
-			echo "<script>alert('ERROR While Registering');</script>";
+			echo "<script>alert('Username already taken');</script>";
 		}
 
 		mysqli_close($mysqli);
