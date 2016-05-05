@@ -9,19 +9,28 @@
 		//prevents code injection
 		$usr = mysqli_real_escape_string($db,$_POST['username']);
 		$pass = mysqli_real_escape_string($db,$_POST['password']);
-		$myquery = "SELECT id FROM Blog_Users WHERE UserName = '$usr' and Password = '$pass'";
-		$start = 1;
-		$result = mysqli_query($db,$myquery);
-		$row = mysqli_fetch_array($result,MYSQLI_ASSOC);
-		$active = $row['active'];
-		//if successful there should be 1 row fetched
-		//If unsuccesful it may be the case usernames are duplicated
-		$count = mysqli_num_rows($result);
-		if($count == 1) {
+
+		$dbURL = 'mysql.eecs.ku.edu';
+		$dbUsername = 'ahutton';
+		$dbPassword = 'myPassword';
+		$dbName = 'ahutton';
+
+		$mysqli = new mysqli($dbURL, $dbUsername, $dbPassword, $dbName);
+
+		if ($mysqli->connect_errno){
+			printf("Connection Failed: %s\n", $mysqli->connect_error);
+			exit();
+		}
+
+		$myquery = "SELECT UserName FROM BlogUsers WHERE UserName = '$usr' and Password = '$pass'";
+
+		if ($myquery->num_rows === 1){
 			$_SESSION['login_user'] = $usr;
 			header("location: successlog.php");//When user is loged they are sent to succeslog.php
-		}else {
-			$error = "Invalid Login";
+
+		}
+		else {
+			echo "<script>alert('Invalid Login');</script>";
 		}
 	}
 ?>
