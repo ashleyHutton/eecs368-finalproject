@@ -12,7 +12,7 @@
 		$usr = mysqli_real_escape_string($db,$_POST['username']);
 		$pass = mysqli_real_escape_string($db,$_POST['password']);
 
-		$myquery = "SELECT id FROM Users WHERE UserName = '$usr' and Password = '$pass'";
+		$myquery = "SELECT id FROM Blog_Users WHERE UserName = '$usr' and Password = '$pass'";
 		$start = 1;
 		$result = mysqli_query($db,$myquery);
 		$row = mysqli_fetch_array($result,MYSQLI_ASSOC);

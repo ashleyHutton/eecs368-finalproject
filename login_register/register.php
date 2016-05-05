@@ -16,7 +16,7 @@ if(isset($_POST['signup_button'])){
 	//echo $usr . " " .$pass; //ucomment to check the POST values for usrname and pass
 
 	$date = date("Y-m-d");
-	$insertquery = "INSERT INTO Users (id,UserName,Password,confirmed,signup_date) VALUES (NULL, '$usr', '$pass','Y', '$date')";
+	$insertquery = "INSERT INTO Blog_Users (id,UserName,Password,confirmed,signup_date) VALUES (NULL, '$usr', '$pass','Y', '$date')";
 		//need a method to check if username and password are valid for registration, with a boolean return
 		if($usr != "" && $pass != "" && mysqli_query($db,$insertquery)){
 ?>

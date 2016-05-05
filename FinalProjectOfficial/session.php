@@ -3,7 +3,7 @@
 	session_start();
 	$user_check = $_SESSION['login_user'];
 	//check if user is in the database
-	$ses_sql = mysqli_query($db,"SELECT username FROM Users where UserName = '$user_check' ");
+	$ses_sql = mysqli_query($db,"SELECT username FROM Blog_Users where UserName = '$user_check' ");
 	//Where MYSQLI_ASSOCiative crates and array of the type ['value1','value2','value3'].
 	$row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
 	//uncomment any, both print the User's Username

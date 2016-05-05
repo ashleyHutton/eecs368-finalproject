@@ -5,23 +5,28 @@
 	<link rel="stylesheet" type="text/css" href="style.css">
 </head>
 <body>
-	<div class="header"> 
+	<div class="header">
 
 		<div class="container">
 
 			<div class="logo">
 				<h1><a href="#"> Final Project Blog Creator</a></h1>
-			</div> 
+			</div>
 
 			<div class="nav">
 				<ul>
+					<li><a href="login.php">Login</a></li>
+					<li><a href="register.php"> Create New Login</a></li>
+					<!--
+					if you use php you dont need direct link to the website
 					<li><a href="http://people.eecs.ku.edu/~cbernosk/FinalProject/login.html"> Login </a></li>
 					<li><a href="http://people.eecs.ku.edu/~cbernosk/FinalProject/createlogin.html"> Create New Login</a></li>
+					-->
 				</ul>
 			</div>
 		</div>
 	</div>
-	
+
 
 	<div class="container">
 	<div class="content">
@@ -30,7 +35,7 @@
 			<img src = "background.jpg" class = "background" height = "85px" width = "950px"></img>
 		</div>
 		<div class = "post">
-			<button style = "width: 10%"> Create New Blog Post </button> 
+			<button style = "width: 10%"> Create New Blog Post </button>
 		</div>
 		<p>
 			The notion of programming paradigms is a way to classify programming languages according to the styles of computer programming. Features of various programming languages determine which paradigms they belong to; as a result, some languages fall into only one paradigm, while others fall into multiple paradigms. Some paradigms are concerned primarily with implications for the execution model of the language, such as allowing side effects, or whether the sequence of operations is defined by the execution model. Other paradigms are concerned primarily with the way that code is organized, such as grouping code into units along with the state that is modified by the code. Yet others are concerned primarily with the style of syntax and grammar.
@@ -42,5 +47,5 @@ For example, languages that fall into the imperative paradigm have two main feat
 	</div>
 	</div>
 </body>
-	
+
 </html>

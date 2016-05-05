@@ -1,23 +1,24 @@
 <?php
-	include("config.php");
-	session_start();
+session_start();
+include("config.php");
 
-	$user_check = $_SESSION['login_user'];
-	//check if user is in the database
-	$ses_sql = mysqli_query($db,"SELECT username FROM Users where UserName = '$user_check' ");
+$user_check = $_SESSION['login_user'];
 
-	//Where MYSQLI_ASSOCiative crates and array of the type ['value1','value2','value3'].
-	$row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
+//check if user is in the database
+$ses_sql = mysqli_query($db,"SELECT UserName FROM Blog_Users where UserName = '$user_check' ");
 
-	//uncomment any, both print the User's Username
-	//echo implode(" ",$row);
-	//echo $row['username'];
+//Where MYSQLI_ASSOCiative crates and array of the type ['value1','value2','value3'].
+$row = mysqli_fetch_array($ses_sql,MYSQLI_ASSOC);
 
-	$login_session = $row['username'];
+//uncomment any, both print the current User's Username
+//echo implode(" ",$row);
+//echo $row['username'];
 
-	//isset determines if a variable is set and not null
-	//If it is null it sends user to the login page
-	if(!isset($_SESSION['login_user'])){
-		header("location:login.php");
-	}
+$login_session = $row['username'];
+
+//isset determines if a variable is set and not null
+//If it is null it sends user to the login page
+if(!isset($_SESSION['login_user'])){
+	header("location:login.php");
+}
 ?>

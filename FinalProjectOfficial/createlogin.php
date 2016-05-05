@@ -1,6 +1,6 @@
 <?php
-include("config.php");
 session_start();
+include("config.php");
 date_default_timezone_set('America/Chicago');
 //if user has a logged session going on it redirects them to succeslog.php
 if(isset($_SESSION['login_user'])!=""){
@@ -15,7 +15,7 @@ if(isset($_POST['signup_button'])){
 	$confirm = mysqli_real_escape_string($db,$_POST['cpword']);
 	//echo $usr . " " .$pass; //ucomment to check the POST values for usrname and pass
 	$date = date("Y-m-d");
-	$insertquery = "INSERT INTO Users (id,UserName,Password,confirmed,signup_date) VALUES (NULL, '$usr', '$pass','Y', '$date')";
+	$insertquery = "INSERT INTO Blog_Users (id,UserName,Password,confirmed,signup_date) VALUES (NULL, '$usr', '$pass','Y', '$date')";
 		//need a method to check if username and password are valid for registration, with a boolean return
 		if($usr != "" && $pass != "" && mysqli_query($db,$insertquery)){
 ?>
@@ -24,93 +24,45 @@ if(isset($_POST['signup_button'])){
 		}
 		else{
 ?>
-				<script>alert('ERROR While Registering');</script>
+			<script>alert('ERROR While Registering');</script>
 <?php
 		}
 }
 ?>
-<!--<html>
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-<title>Registration System</title>
-
-</head>
-<body>
-	<center>
-		<div id="login-form" align="center">
-			<form action ="" method="post">
-
-					<label>UserName :</label><input type="text" name="username" required /><br /><br />
-					<label>Password :</label><input type="password" name="password" required /><br /><br />
-
-					<button type="submit" name="signup_button">Sign Me Up</button><br /><br />
-					<a href="login.php">Sign In Here</a>
-			</form>
-		</div>
-	</center>
-</body>
--->
 <html>
+<script>
+function checkPass(){
+	var p1 = document.getElementById('p1').value;
+	var p2 = document.getElementById('p2').value;
+
+	if(p1 != p2 || p2 == ""){
+		alert("Passwords Don't Match");
+		event.preventDefault();
+	}
+	return true;
+}
+</script>
 <head>
 	<title> Create Log In </title>
-	<style>
-		body {
-	width: 100%;
-	margin: auto;
-	}
-	.container {
-		width: 950px;
-		margin: 0 auto;
-		top = 0;
-	}
-	.header {
-		background: #6396bc;
-		width: 100%;
-		top: 0;
-		position: fixed;
-	}
-	.logo {
-		float: left;
-		font-family: "Halevetica";
-		font-size: 15px; 
-	}
-	a{
-		text-decoration: none;
-		color: #fff;
-	}
-	li{
-		list-style: none;
-		float: left;
-		margin-left: 15px;
-		padding-top: 10px;
-	}
-	.nav{
-		float: right;
-	}
-	.input{
-		text-align: center;
-		font-family: "Times New Roman"
-		text-decoration: 
-	}
-	</style>
-</head>	
+	<link rel="stylesheet" type="text/css" href="login.css">
+</head>
 <body>
-	<div class="header"> 
+	<div class="header">
 		<div class="container">
 
 			<div class="logo">
 				<h1><a href="#"><center> Create Log In </center></a></h1>
-			</div> 
+			</div>
 
 			<div class="nav">
 				<ul>
-					<li><a href="http://people.eecs.ku.edu/~cbernosk/BlogSite/login.php"> Already have an account? </a></li>
-					<li><a href="http://people.eecs.ku.edu/~cbernosk/BlogSite/index.html"> Return </a></li>
+					<li><a href="login.php"> Already have an account? </a></li>
+					<li><a href="index.php"> Return </a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
-	
+
 	<div class="container">
 	<div class="content">
 		<br/><br/><br/><br/>
@@ -119,14 +71,12 @@ if(isset($_POST['signup_button'])){
 		</div>
 	</div>
 	<div class = "input">
-		<form action"http://people.eecs.ku.edu/~cbernosk/BlogSite/index.html" method="post">
-			First Name: <input type = "text" name = "fname" style = "width: 40%" required><br><br>
-			Last Name: <input type = "text" name = "lname" style = "width: 40%" required><br><br>
-			E-mail: <input type = "text" name = "username" style = "width: 43%" required><br><br>
-			Password: <input type = "password" name = "password" style = "width: 41%" required><br><br>
-			Confirm - Password <input type = "password" name = "cpword" style = "width: 35%" required><br><br>
+		<form action="" onsubmit ="return checkPass()"  method="post">
+			User Name: <input type = "text" name = "username" style = "width: 40%" required><br><br>
+			Password: <input id ="p1" value="" type = "password" name = "password"  style = "width: 41%" required><br><br>
+			Confirm: <input id="p2" value="" type = "password" name = "cpword"  style = "width: 35%" required><br><br>
+			<button type="submit" style = "width: 15%" name="signup_button"> Submit </button>
 		</form>
-		<button style = "width: 15%" name="signup_button"> Submit </button>
 	</div>
 	</div>
 </body>
