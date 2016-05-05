@@ -26,8 +26,8 @@
 
 		if ($myquery->num_rows === 1){
 			echo "<script>alert('Success!');</script>";
-			$_SESSION['login_user'] = $usr;
-			header("location: successlog.php");//When user is loged they are sent to succeslog.php
+			//$_SESSION['login_user'] = $usr;
+			//header("location: successlog.php");//When user is loged they are sent to succeslog.php
 
 		}
 		else {
