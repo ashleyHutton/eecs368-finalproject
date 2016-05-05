@@ -10,23 +10,48 @@ if(isset($_POST['signup_button'])){
 	//prevents code injection
 	$usr = mysqli_real_escape_string($db,$_POST['username']);
 	$pass = mysqli_real_escape_string($db,$_POST['password']);
-	$fname = mysqli_real_escape_string($db,$_POST['fname']);
-	$lname = mysqli_real_escape_string($db,$_POST['lname']);
-	$confirm = mysqli_real_escape_string($db,$_POST['cpword']);
 	//echo $usr . " " .$pass; //ucomment to check the POST values for usrname and pass
-	$date = date("Y-m-d");
-	$insertquery = "INSERT INTO Blog_Users (id,UserName,Password,confirmed,signup_date) VALUES (NULL, '$usr', '$pass','Y', '$date')";
 		//need a method to check if username and password are valid for registration, with a boolean return
-		if($usr != "" && $pass != "" && mysqli_query($db,$insertquery)){
-?>
-			<script>alert('Registration Successful');</script>
-<?php
+
+	if($usr != "" && $pass != ""){
+
+		$dbURL = 'mysql.eecs.ku.edu';
+		$dbUsername = 'ahutton';
+		$dbPassword = 'myPassword';
+		$dbName = 'ahutton';
+
+		$mysqli = new mysqli($dbURL, $dbUsername, $dbPassword, $dbName);
+
+		if ($mysqli->connect_errno){
+			printf("Connection Failed: %s\n", $mysqli->connect_error);
+			exit();
 		}
-		else{
-?>
-			<script>alert('ERROR While Registering');</script>
-<?php
+
+		$checkDuplicate = $mysqli->query("SELECT user_id FROM Users WHERE user_id='$usr'");
+
+		if ($checkDuplicate->num_rows === 0){
+
+			$insertquery = "INSERT INTO Blog_Users (ID,UserName,Password,signup_date) VALUES (NULL, '$usr', '$pass', NOW())";
+
+			if ($mysqli->query($insertquery) === TRUE) {
+				echo "Success!";
+			}
+			else {
+				echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+			}
 		}
+		else {
+			echo "Username already exists!";
+		}
+
+		mysqli_close($mysqli);
+	}
+
+	else{
+?>
+		<script>alert('ERROR While Registering');</script>
+<?php
+	}
 }
 ?>
 <html>
@@ -51,7 +76,7 @@ function checkPass(){
 		<div class="container">
 
 			<div class="logo">
-				<h1><a href="#"><center> Create Log In </center></a></h1>
+				<h1><a href="#"><center> Sign Up </center></a></h1>
 			</div>
 
 			<div class="nav">
