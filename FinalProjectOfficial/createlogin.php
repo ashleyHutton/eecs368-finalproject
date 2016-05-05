@@ -27,13 +27,13 @@ if(isset($_POST['signup_button'])){
 			exit();
 		}
 
-		$checkDuplicate = $mysqli->query("SELECT user_id FROM Users WHERE user_id='$usr'");
+		$checkDuplicate = $mysqli->query("SELECT UserName FROM BlogUsers WHERE UserName='$usr'");
 
 		if ($checkDuplicate->num_rows === 0){
 
-			$insertquery = "INSERT INTO BlogUsers (UserName,Password,signup_date) VALUES ('$usr', '$pass', NOW())";
+			$sql = "INSERT INTO BlogUsers (UserName, Password, date_created) VALUES ('$usr','$pass',NOW())";
 
-			if ($mysqli->query($insertquery) === TRUE) {
+			if ($mysqli->query($sql) === TRUE ) {
 				echo "Success!";
 			}
 			else {
