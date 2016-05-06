@@ -10,10 +10,10 @@
 
 		$myquery = $db -> query("SELECT comments FROM BlogUsers WHERE Text = '$blog_post'");
 		if($myquery -> num_rows === 1){
-			echo "<script> alert ('Success!');</script>";
+			//echo "<script> alert ('Success!');</script>";//This scripts alerts prevent the php from redirecting in some browsers
 		}
 		else {
-			echo "<script>alert('Invalid Login');</script>";
+			//echo "<script>alert('Invalid Login');</script>";
 		}
 	}
 ?>
@@ -37,6 +37,8 @@
 		<div class = "nav">
 			<ul>
 				<li><a href = "index.php">Return Home</a></li>
+
+				<li><a href = "logout.php">Sign Out</a></li>
 			</ul>
 		</div>
 	</div>
@@ -51,8 +53,10 @@
 		<div class = "picture">
 			<center><img src = "background.jpg" class = "background" height = "200px" width = "950px"></img></center>
 		</div>
-		</br></br>
 		</br>
+			<div class="post">
+
+			</div>
 		</br>
 			<center>
 

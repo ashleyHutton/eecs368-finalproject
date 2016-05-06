@@ -5,7 +5,7 @@ margin: auto;
 .container {
 width: 950px;
 margin: 0 auto;
-top = 0;
+top: 0;
 }
 .header {
 background: #6396bc;

@@ -6,7 +6,7 @@ body {
 .container {
 	width: 950px;
 	margin: 0 auto;
-	top = 0;
+	top: 0;
 }
 
 .header {
@@ -19,7 +19,7 @@ body {
 .logo {
 	float: left;
 	font-family: "Halevetica";
-	font-size: 15px; 
+	font-size: 15px;
 }
 
 a{
@@ -37,4 +37,3 @@ li{
 .nav{
 	float: right;
 }
-
