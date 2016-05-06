@@ -3,16 +3,22 @@ body {
 	margin: auto;
 }
 
-.container {
-	width: 950px;
+.top_bar{
+	width: 80%;
 	margin: 0 auto;
-	top: 0;
+	height: auto;
+}
+.container {
+	width: 80%;
+	position: relative;
+	top: 100px;
+	margin: auto;
+	float: none;;
 }
 
 .header {
 	background: #6396bc;
 	width: 100%;
-	top: 0;
 	position: fixed;
 }
 
@@ -36,4 +42,20 @@ li{
 
 .nav{
 	float: right;
+}
+.post_area{
+	align-content: center;
+	width: 100%;
+	background-color:rgb(148, 172, 196);
+	color:white;
+	padding:20px;
+	margin-bottom: 10px;
+}
+.post_content{
+	align-self: center;
+	width: 90%;
+	background-color:rgb(59, 70, 98);
+	color:white;
+	padding:20px;
+	word-wrap: break-word;
 }

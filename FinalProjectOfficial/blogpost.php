@@ -4,6 +4,7 @@
 	if(isset($_SESSION['login_user'])==""){
 		header("location: login.php");
 	}
+	
 	if($_SERVER["REQUEST_METHOD"] == "POST"){
 		//prevents code injection
 		$blog_post = mysqli_real_escape_string($db, $_POST['comments']);
@@ -46,7 +47,7 @@
 </div>
 <div>
 
-		 <form action="" method="post">
+	<form action="" method="post">
 		</br>
 		</br>
 		</div>
