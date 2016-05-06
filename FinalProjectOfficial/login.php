@@ -3,32 +3,19 @@
 	include("config.php");
 	//if user has a session going on it redirects them to succeslog.php
 	if(isset($_SESSION['login_user'])!=""){
-		header("Location: successlog.php");
+		header("location: successlog.php");
 	}
 	if($_SERVER["REQUEST_METHOD"] == "POST") {
 		//prevents code injection
 		$usr = mysqli_real_escape_string($db,$_POST['username']);
 		$pass = mysqli_real_escape_string($db,$_POST['password']);
 
-		$dbURL = 'mysql.eecs.ku.edu';
-		$dbUsername = 'ahutton';
-		$dbPassword = 'myPassword';
-		$dbName = 'ahutton';
-
-		$mysqli = new mysqli($dbURL, $dbUsername, $dbPassword, $dbName);
-
-		if ($mysqli->connect_errno){
-			printf("Connection Failed: %s\n", $mysqli->connect_error);
-			exit();
-		}
-
-		$myquery = $mysqli->query("SELECT UserName FROM BlogUsers WHERE UserName = '$usr' and Password = '$pass'");
+		$myquery = $db->query("SELECT UserName FROM BlogUsers WHERE UserName = '$usr' and Password = '$pass'");
 
 		if ($myquery->num_rows === 1){
-			echo "<script>alert('Success!');</script>";
-			//$_SESSION['login_user'] = $usr;
-			//header("location: successlog.php");//When user is loged they are sent to succeslog.php
-
+			//echo "<script>alert('Success!');</script>";
+			$_SESSION['login_user'] = $usr;
+			header("location: successlog.php");//When user is loged they are sent to succeslog.php
 		}
 		else {
 			echo "<script>alert('Invalid Login');</script>";

@@ -15,36 +15,29 @@ if(isset($_POST['signup_button'])){
 
 	if($usr != "" && $pass != ""){
 
-		$dbURL = 'mysql.eecs.ku.edu';
-		$dbUsername = 'ahutton';
-		$dbPassword = 'myPassword';
-		$dbName = 'ahutton';
-
-		$mysqli = new mysqli($dbURL, $dbUsername, $dbPassword, $dbName);
-
-		if ($mysqli->connect_errno){
-			printf("Connection Failed: %s\n", $mysqli->connect_error);
+		if ($db->connect_errno){
+			printf("Connection Failed: %s\n", $db->connect_error);
 			exit();
 		}
 
-		$checkDuplicate = $mysqli->query("SELECT UserName FROM BlogUsers WHERE UserName='$usr'");
+		$checkDuplicate = $db->query("SELECT UserName FROM BlogUsers WHERE UserName='$usr'");
 
 		if ($checkDuplicate->num_rows === 0){
 
 			$sql = "INSERT INTO BlogUsers (UserName, Password, date_created) VALUES ('$usr','$pass',NOW())";
 
-			if ($mysqli->query($sql) === TRUE ) {
+			if ($db->query($sql) === TRUE ) {
 				echo "Success!";
 			}
 			else {
-				echo "Error: " . $sql . "<br>" . mysqli_error($mysqli);
+				echo "Error: " . $sql . "<br>" . mysqli_error($db);
 			}
 		}
 		else {
 			echo "<script>alert('Username already taken');</script>";
 		}
 
-		mysqli_close($mysqli);
+		mysqli_close($db);
 	}
 
 	else{

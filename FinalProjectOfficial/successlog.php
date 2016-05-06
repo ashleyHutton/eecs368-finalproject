@@ -1,7 +1,9 @@
 <?php
 include("session.php");
 if(isset($_SESSION['login_user'])==""){
-	header("Location: login.php");
+	header("location: login.php");
+}else {
+	header("location: blogpost.php"); //Redirect them to the blogpost.php
 }
 ?>
 <html>
