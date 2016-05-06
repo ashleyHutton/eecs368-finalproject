@@ -11,20 +11,20 @@
 		//prevents code injection
 		$blog_post = mysqli_real_escape_string($db, $_POST['content']);
 
-		if ($content == ""){
-			echo "Content can't be blank!";
+		if ($blog_post == ""){
+			echo "<script>alert('Post cannot be blank!');</script>";
 		}
 		else {
 
-			$sql = "INSERT INTO BlogPosts (author_id, content) VALUES ('$user_id','$content')";
+			$sql = "INSERT INTO BlogPosts (author_id, content) VALUES ('$user_id','$blog_post')";
 
 			if ($db->query($sql) === TRUE) {
 				echo "<script>alert('Success!');</script>";
-				echo "Success!";
+				//echo "Success!";
 			}
 			else {
 				echo "<script>alert('Error!');</script>";
-				echo "Error: " . $sql . "<br>" . mysqli_error($db);
+				//echo "Error: " . $sql . "<br>" . mysqli_error($db);
 			}
 		}
 
