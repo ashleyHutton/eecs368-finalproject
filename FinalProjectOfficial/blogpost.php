@@ -1,21 +1,31 @@
 <?php
+	include("config.php");
 	include("session.php"); //once user is confirmed only include session.php which also has acces to the DataBase
 	//if user has session going on it redirects them to succeslog.php
 	if(isset($_SESSION['login_user'])==""){
 		header("location: login.php");
 	}
 	
-	if($_SERVER["REQUEST_METHOD"] == "POST"){
+	if(isset($_POST['submit_button'])){
 		//prevents code injection
-		$blog_post = mysqli_real_escape_string($db, $_POST['comments']);
+		$blog_post = mysqli_real_escape_string($db, $_POST['content']);
 
-		$myquery = $db -> query("SELECT comments FROM BlogUsers WHERE Text = '$blog_post'");
-		if($myquery -> num_rows === 1){
-			//echo "<script> alert ('Success!');</script>";//This scripts alerts prevent the php from redirecting in some browsers
+		if ($content == ""){
+			echo "Content can't be blank!";
 		}
 		else {
-			//echo "<script>alert('Invalid Login');</script>";
+
+			$sql = "INSERT INTO BlogUsers (author_id, content) VALUES ('$user_id','$content')";
+
+			if ($db->query($sql) === TRUE) {
+				echo "<script>alert('Success!');</script>";
+				echo "Success!";
+			}
+			else {
+				echo "Error: " . $sql . "<br>" . mysqli_error($db);
+			}
 		}
+
 	}
 ?>
 <html>
@@ -61,12 +71,12 @@
 		</br>
 			<center>
 
-				<textarea name="comments" id="comments" style="width:1000px;height:100px;padding:10px;border:1px solid blue;"rows="1" cols = "100">
+				<textarea name="content" id="content" style="width:1000px;height:100px;padding:10px;border:1px solid blue;"rows="1" cols = "100">
 
 				</textarea>
 			</center>
 		</div>
-			<center><input type="submit" value="Submit A Post"></center>
+			<center><button type="submit" name="submit_button"</button></center>
 	</form>
 
 </body>
