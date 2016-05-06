@@ -7,7 +7,6 @@
 	}
 	
 	if(isset($_POST['submit_button'])){
-		echo "<script>alert('Post Submitted');</script>";
 
 		//prevents code injection
 		$blog_post = mysqli_real_escape_string($db, $_POST['content']);
@@ -17,7 +16,7 @@
 		}
 		else {
 
-			$sql = "INSERT INTO BlogUsers (author_id, content) VALUES ('$user_id','$content')";
+			$sql = "INSERT INTO BlogPosts (author_id, content) VALUES ('$user_id','$content')";
 
 			if ($db->query($sql) === TRUE) {
 				echo "<script>alert('Success!');</script>";
