@@ -22,6 +22,7 @@
 				echo "Success!";
 			}
 			else {
+				echo "<script>alert('Error!');</script>";
 				echo "Error: " . $sql . "<br>" . mysqli_error($db);
 			}
 		}
@@ -76,7 +77,7 @@
 				</textarea>
 			</center>
 		</div>
-			<center><button type="submit" name="submit_button"</button></center>
+			<center><button type="submit" name="submit_button">Submit</button></center>
 	</form>
 
 </body>
