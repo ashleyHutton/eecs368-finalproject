@@ -7,6 +7,8 @@
 	}
 	
 	if(isset($_POST['submit_button'])){
+		echo "<script>alert('Post Submitted');</script>";
+
 		//prevents code injection
 		$blog_post = mysqli_real_escape_string($db, $_POST['content']);
 
