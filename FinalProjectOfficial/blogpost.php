@@ -1,5 +1,4 @@
 <?php
-	include("config.php");
 	include("session.php"); //once user is confirmed only include session.php which also has acces to the DataBase
 	//if user has session going on it redirects them to succeslog.php
 	if(isset($_SESSION['login_user'])==""){
@@ -13,7 +12,7 @@
 
 		if ($blog_post == ""){
 			echo "<script>alert('Post cannot be blank!');</script>";
-		}
+		}/*
 		else {
 
 			$sql = "INSERT INTO BlogPosts (author_id, content) VALUES ('$user_id','$blog_post')";
@@ -25,7 +24,7 @@
 			else {
 				echo "<script>alert('Error!');</script>";
 				//echo "Error: " . $sql . "<br>" . mysqli_error($db);
-			}
+			}*/
 		}
 
 	}
