@@ -4,25 +4,25 @@
 	if(isset($_SESSION['login_user'])==""){
 		header("location: login.php");
 	}
-	
-	if(isset($_POST['submit_button'])){
+
+	if(isset($_POST['content'])){
 
 		//prevents code injection
-		$blog_post = mysqli_real_escape_string($db, $_POST['content']);
+		$blog_post = $_POST['content'];
+		$blog_post = htmlspecialchars($blog_post);
 
 		if ($blog_post == ""){
 			echo "<script>alert('Post cannot be blank!');</script>";
 		}
 		else {
-
-			$sql = "INSERT INTO BlogPosts (author_id, content) VALUES ('$user_id','$blog_post')";
+			$sql = "INSERT INTO Posts (author_id, content) VALUES ( '$login_session','$blog_post')";
 
 			if ($db->query($sql) === TRUE) {
-				echo "<script>alert('Success!');</script>";
+				//echo "<script>alert('Success!');</script>";
 				//echo "Success!";
 			}
 			else {
-				echo "<script>alert('Error!');</script>";
+				//echo "<script>alert('Error!');</script>";
 				//echo "Error: " . $sql . "<br>" . mysqli_error($db);
 			}
 		}
@@ -67,7 +67,6 @@
 		</div>
 		</br>
 			<div class="post">
-
 			</div>
 		</br>
 			<center>
