@@ -10,7 +10,7 @@
 	//echo implode(" ",$row);
 	//echo $row['username'];
 	$login_session = $row['UserName'];
-	$user_id = $row['ID'];
+	$sql = mysqli_query($db,"SELECT ID FROM BlogUsers WHERE UserName = '$login_session' ");
 	//isset determines if a variable is set and not null
 	//If it is null it sends user to the login page
 	if(!isset($_SESSION['login_user'])){
