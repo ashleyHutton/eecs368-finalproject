@@ -9,6 +9,7 @@
 
 		//prevents code injection
 		$blog_post = mysqli_real_escape_string($db, $_POST['content']);
+		$user_id =  $db->query("SELECT UserName FROM BlogUsers WHERE UserName='login_session'");
 
 		if ($blog_post == ""){
 			echo "<script>alert('Post cannot be blank!');</script>";
