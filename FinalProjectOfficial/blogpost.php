@@ -6,14 +6,14 @@
 	}
 	
 	if(isset($_POST['submit_button'])){
-/*
+
 		//prevents code injection
 		$blog_post = mysqli_real_escape_string($db, $_POST['content']);
 
 		if ($blog_post == ""){
 			echo "<script>alert('Post cannot be blank!');</script>";
 		}
-		else {
+/*		else {
 
 			$sql = "INSERT INTO BlogPosts (author_id, content) VALUES ('$user_id','$blog_post')";
 
