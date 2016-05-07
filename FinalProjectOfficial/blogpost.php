@@ -13,10 +13,10 @@
 		if ($blog_post == ""){
 			echo "<script>alert('Post cannot be blank!');</script>";
 		}
-/*		else {
+		else {
 
 			$sql = "INSERT INTO BlogPosts (author_id, content) VALUES ('$user_id','$blog_post')";
-
+/*
 			if ($db->query($sql) === TRUE) {
 				echo "<script>alert('Success!');</script>";
 				//echo "Success!";
@@ -24,9 +24,9 @@
 			else {
 				echo "<script>alert('Error!');</script>";
 				//echo "Error: " . $sql . "<br>" . mysqli_error($db);
-			}
+			}*/
 		}
-*/
+
 	}
 ?>
 <html>
