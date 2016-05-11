@@ -9,9 +9,7 @@
 		//prevents code injection
 		$usr = mysqli_real_escape_string($db,$_POST['username']);
 		$pass = mysqli_real_escape_string($db,$_POST['password']);
-
 		$myquery = $db->query("SELECT UserName FROM BlogUsers WHERE UserName = '$usr' and Password = '$pass'");
-
 		if ($myquery->num_rows === 1){
 			//echo "<script>alert('Success!');</script>";
 			$_SESSION['login_user'] = $usr;
@@ -28,7 +26,7 @@
 	<title> Log In </title>
 	<link rel="stylesheet" type="text/css" href="login.css">
 </head>
-<body>
+<body background = "background.jpg">
 	<div class="header">
 		<div class="container">
 
@@ -47,10 +45,7 @@
 
 	<div class="container">
 	<div class="content">
-		<br/><br/><br/><br/>
-		<div class = "picture">
-			<img src = "background.jpg" class = "background" height = "45px" width = "950px"></img>
-		</div>
+		<br/><br/><br/><br/></br></br>
 	</div>
 	<div class = "input">
 		<form action="" method="post">
