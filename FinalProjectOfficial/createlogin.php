@@ -12,20 +12,14 @@ if(isset($_POST['signup_button'])){
 	$pass = mysqli_real_escape_string($db,$_POST['password']);
 	//echo $usr . " " .$pass; //ucomment to check the POST values for usrname and pass
 		//need a method to check if username and password are valid for registration, with a boolean return
-
 	if($usr != "" && $pass != ""){
-
 		if ($db->connect_errno){
 			printf("Connection Failed: %s\n", $db->connect_error);
 			exit();
 		}
-
 		$checkDuplicate = $db->query("SELECT UserName FROM BlogUsers WHERE UserName='$usr'");
-
 		if ($checkDuplicate->num_rows === 0){
-
 			$sql = "INSERT INTO BlogUsers (UserName, Password, date_created) VALUES ('$usr','$pass',NOW())";
-
 			if ($db->query($sql) === TRUE ) {
 				echo "Success!";
 			}
@@ -36,10 +30,8 @@ if(isset($_POST['signup_button'])){
 		else {
 			echo "<script>alert('Username already taken');</script>";
 		}
-
 		mysqli_close($db);
 	}
-
 	else{
 ?>
 		<script>alert('ERROR While Registering');</script>
@@ -52,7 +44,6 @@ if(isset($_POST['signup_button'])){
 function checkPass(){
 	var p1 = document.getElementById('p1').value;
 	var p2 = document.getElementById('p2').value;
-
 	if(p1 != p2 || p2 == ""){
 		alert("Passwords Don't Match");
 		event.preventDefault();
@@ -64,7 +55,7 @@ function checkPass(){
 	<title> Create Log In </title>
 	<link rel="stylesheet" type="text/css" href="login.css">
 </head>
-<body>
+<body background = "background.jpg">
 	<div class="header">
 		<div class="container">
 
@@ -83,11 +74,7 @@ function checkPass(){
 
 	<div class="container">
 	<div class="content">
-		<br/><br/><br/><br/>
-		<div class = "picture">
-			<img src = "background.jpg" class = "background" height = "45px" width = "950px"></img>
-		</div>
-	</div>
+	</br></br></br></br></br></br></br></br></br></br>
 	<div class = "input">
 		<form action="" onsubmit ="return checkPass()"  method="post">
 			User Name: <input type = "text" name = "username" style = "width: 40%" required><br><br>
