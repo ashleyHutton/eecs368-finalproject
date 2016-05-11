@@ -4,19 +4,15 @@
 	if(isset($_SESSION['login_user'])==""){
 		header("location: login.php");
 	}
-
 	if(isset($_POST['content'])){
-
 		//prevents code injection
 		$blog_post = $_POST['content'];
 		$blog_post = htmlspecialchars($blog_post);
-
 		if ($blog_post == ""){
 			echo "<script>alert('Post cannot be blank!');</script>";
 		}
 		else {
 			$sql = "INSERT INTO Posts (author_id, content) VALUES ( '$login_session','$blog_post')";
-
 			if ($db->query($sql) === TRUE) {
 				//echo "<script>alert('Success!');</script>";
 				//echo "Success!";
@@ -26,7 +22,6 @@
 				//echo "Error: " . $sql . "<br>" . mysqli_error($db);
 			}
 		}
-
 	}
 ?>
 <html>
@@ -34,14 +29,13 @@
 	<title> Final Project Blog</title>
 	<link rel="stylesheet" type="text/css" href="blogpost.css">
 </head>
-<body>
+<body background = "background.jpg">
 
 <div class="header">
 
 	<div class="container">
 	<div class="content">
-		<br/><br/><br/><br/>
-
+		<br/>
 		<div class="logo">
 			<h1><a href="#"> Blog Post</a></h1>
 		</div>
@@ -59,12 +53,9 @@
 <div>
 
 	<form action="" method="post">
-		</br>
-		</br>
+		</br></br></br></br></br></br></br>
 		</div>
-		<div class = "picture">
-			<center><img src = "background.jpg" class = "background" height = "200px" width = "950px"></img></center>
-		</div>
+
 		</br>
 			<div class="post">
 			</div>
@@ -76,7 +67,7 @@
 				</textarea>
 			</center>
 		</div>
-			<center><button type="submit" name="submit_button">Submit</button></center>
+			<center></br></br></br></br><button type="submit" name="submit_button">Submit</button></center>
 	</form>
 
 </body>
