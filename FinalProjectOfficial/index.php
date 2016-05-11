@@ -6,7 +6,7 @@
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript"src="post_loader.js"></script>
 </head>
-<body>
+<body background = "background.jpg">
 	<div class="header">
 		<div class="top_bar">
 			<div class="logo">
@@ -28,9 +28,6 @@
 	</div>
 
 	<div class="container">
-		<div class = "picture" stle="position: relative;">
-			<img src = "background.jpg" class = "background" height = "85px" width = "950px"></img>
-		</div>
 		<div class="content">
 			<div id="thread" class="postThread">
 
