@@ -8,6 +8,9 @@ if(isset($_POST['ID_filter'])){ //Here we check if we are selecting only a certa
 	$postQuery = "SELECT author_id,content,post_id FROM Posts";
 }
 $likeQuery = "SELECT post_id FROM post_like WHERE (uid = $user_id)";
+
+$countQuery = " SELECT post_id, COUNT(uid) FROM post_like GROUP BY post_id";
+
 $fetched_posts = array();
 if($result = $db->query($postQuery)){
 	while($row = $result->fetch_assoc()){
@@ -36,6 +39,7 @@ for($i = 0; $i < sizeof($fetched_posts); $i++){
 	echo $user_id;
 	$formated_post = "
 	<div class='post_area'>
+		$thisPostID
 		<div>Author: <label>$posterId</label></div>
 		<div class='post_content'>
 			$postCont
