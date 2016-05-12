@@ -1,0 +1,16 @@
+function load_allPosts(){
+	var file = "post_loader.php";
+	var ID = $('#myid').val();
+	var data = {ID_filter: ID};
+	var jqxhr = $.post(file,data,function(datafromserver)
+	{
+		$('#thread').html(datafromserver);
+	});
+}
+
+
+
+$(document).ready(function()
+{
+	load_allPosts();
+});

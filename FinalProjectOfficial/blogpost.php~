@@ -29,6 +29,7 @@
 <head>
 	<title> Final Project Blog</title>
 	<link rel="stylesheet" type="text/css" href="blogpost.css">
+<link rel="stylesheet" type="text/css" href="style.css">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
 	<script type="text/javascript" src="blogpost.js"></script>
 </head>
