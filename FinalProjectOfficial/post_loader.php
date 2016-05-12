@@ -9,12 +9,14 @@ if(isset($_POST['ID_filter'])){ //Here we check if we are selecting only a certa
 }
 $likeQuery = "SELECT post_id FROM post_like WHERE (uid = $user_id)";
 
-$countQuery = " SELECT post_id, COUNT(uid) FROM post_like GROUP BY post_id";
+$countQuery = " SELECT COUNT(uid) FROM post_like GROUP BY post_id";
 
 $fetched_posts = array();
 if($result = $db->query($postQuery)){
+ 	$result2 = $db->query($countQuery);
 	while($row = $result->fetch_assoc()){
-		array_push($fetched_posts, [$row['author_id'],$row['content'],$row['post_id']]);
+		$row2 = $result2->fetch_array();
+		array_push($fetched_posts, [$row['author_id'],$row['content'],$row['post_id'],$row2[0]]);
 	}
 	$result->free();
 }
@@ -29,6 +31,7 @@ for($i = 0; $i < sizeof($fetched_posts); $i++){
 	$posterId = $fetched_posts[$i][0];
 	$postCont = $fetched_posts[$i][1];
 	$thisPostID = $fetched_posts[$i][2];
+	$likeCount = $fetched_posts[$i][3];
 	if(in_array($thisPostID,$fetched_likes)){
 		$vote = "-";
 		$val = 0;
@@ -41,6 +44,7 @@ for($i = 0; $i < sizeof($fetched_posts); $i++){
 	<div class='post_area'>
 		$thisPostID
 		<div>Author: <label>$posterId</label></div>
+		$likeCount
 		<div class='post_content'>
 			$postCont
 			<div class = 'buttons'>
