@@ -54,14 +54,13 @@ for($i = 0; $i < sizeof($fetched_posts); $i++){
 	<div class='post_area'>
 		$thisPostID
 		<div>Author: <label>$posterId</label></div>
-		$likeCount
 		<div class='post_content'>
 			$postCont
 			<div class = 'buttons'>
-			<button class = 'vote' value=". $val ." data-postID=". $thisPostID ." type= 'submit' name='vote' > ". $vote ."</button>
+			<button class = 'vote' value=". $val ." data-postID=". $thisPostID ." type= 'submit' name='vote' style='background-color:red'> ". $vote ."</button>
+			<div> Like: <label>$likeCount</label></div>
 		</div>
 		</div>
-		
 	</div>";
 	echo $formated_post;
 }
