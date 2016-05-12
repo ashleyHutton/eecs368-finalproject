@@ -45,9 +45,11 @@ for($i = 0; $i < sizeof($fetched_posts); $i++){
 	if(in_array($thisPostID,$fetched_likes)){
 		$vote = "-";
 		$val = 0;
+		$color = "#ED6D6D";
 	}else{
 		$vote = "+";
 		$val = 1;
+		$color = "#7DF59B";
 	}
 	echo $user_id;
 	$formated_post = "
@@ -57,7 +59,7 @@ for($i = 0; $i < sizeof($fetched_posts); $i++){
 		<div class='post_content'>
 			$postCont
 			<div class = 'buttons'>
-			<button class = 'vote' value=". $val ." data-postID=". $thisPostID ." type= 'submit' name='vote' style='background-color:red'> ". $vote ."</button>
+			<button class = 'vote' value=". $val ." data-postID=". $thisPostID ." type= 'submit' name='vote' style='background-color:$color'> ". $vote ."</button>
 			<div> Like: <label>$likeCount</label></div>
 		</div>
 		</div>
