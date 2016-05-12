@@ -2,7 +2,7 @@
 include ("session.php");
 $like = $_POST['vote'];
 $post_id = $_POST['post_id'];
-$prevLike = "SELECT * FROM post_like WHERE (post_id = $post_id AND $user_id)";
+$prevLike = "SELECT * FROM post_like WHERE (post_id = $post_id AND uid = $user_id)";
 $result = $db->query($prevLike);
 $counted = mysqli_num_rows($result);
 if($like == 1 and $counted == 0){

@@ -9,14 +9,19 @@ if(isset($_POST['ID_filter'])){ //Here we check if we are selecting only a certa
 }
 $likeQuery = "SELECT post_id FROM post_like WHERE (uid = $user_id)";
 
-$countQuery = " SELECT COUNT(uid) FROM post_like GROUP BY post_id";
+$countQuery = " SELECT post_id,COUNT(uid) FROM post_like GROUP BY post_id";
 
 $fetched_posts = array();
 if($result = $db->query($postQuery)){
  	$result2 = $db->query($countQuery);
+	$row2 = $result2->fetch_assoc();
 	while($row = $result->fetch_assoc()){
-		$row2 = $result2->fetch_array();
-		array_push($fetched_posts, [$row['author_id'],$row['content'],$row['post_id'],$row2[0]]);
+		if($row2['post_id'] == $row['post_id']){
+			array_push($fetched_posts, [$row['author_id'],$row['content'],$row['post_id'],$row2['COUNT(uid)']]);
+			$row2 = $result2->fetch_assoc();
+		}else{
+			array_push($fetched_posts, [$row['author_id'],$row['content'],$row['post_id'],0]);
+		}
 	}
 	$result->free();
 }
