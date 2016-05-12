@@ -1,0 +1,62 @@
+body {
+	width: 100%;
+	margin: auto;
+}
+
+.top_bar{
+	width: 80%;
+	margin: 0 auto;
+	height: auto;
+}
+.container {
+	width: 80%;
+	position: relative;
+	top: 100px;
+	margin: auto;
+	float: none;;
+}
+
+.header {
+	background: #6396bc;
+	width: 100%;
+	position: fixed;
+	z-index: 10;
+}
+
+.logo {
+	float: left;
+	font-family: "Halevetica";
+	font-size: 15px;
+}
+
+a{
+	text-decoration: none;
+	color: #fff;
+}
+
+li{
+	list-style: none;
+	float: left;
+	margin-left: 15px;
+	padding-top: 10px;
+}
+
+.nav{
+	float: right;
+}
+.post_area{
+	align-content: center;
+	width: 100%;
+	background-color:rgb(148, 172, 196);
+	color:white;
+	padding:20px;
+	margin-bottom: 10px;
+}
+.post_content{
+	align-self: center;
+	width: 90%;
+	background-color:rgb(59, 70, 98);
+	color:white;
+	padding:20px;
+	word-wrap: break-word;
+}
