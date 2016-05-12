@@ -17,13 +17,14 @@ if($result = $db->query($postQuery)){
 	$row2 = $result2->fetch_assoc();
 	while($row = $result->fetch_assoc()){
 		if($row2['post_id'] == $row['post_id']){
-			array_push($fetched_posts, [$row['author_id'],$row['content'],$row['post_id'],$row2['COUNT']]);
+			array_push($fetched_posts, [$row['author_id'],$row['content'],$row['post_id'],$row2['COUNT(uid)']]);
 			$row2 = $result2->fetch_assoc();
 		}else{
 			array_push($fetched_posts, [$row['author_id'],$row['content'],$row['post_id'],0]);
 		}
 	}
 	$result->free();
+	$result2->free();
 }
 $fetched_likes = array();
 if($result = $db->query($likeQuery)){
@@ -32,6 +33,10 @@ if($result = $db->query($likeQuery)){
 	}
 	$result->free();
 }
+usort($fetched_posts, function ($elem1, $elem2) {
+     return strcmp($elem2[3], $elem1[3]);
+});
+
 for($i = 0; $i < sizeof($fetched_posts); $i++){
 	$posterId = $fetched_posts[$i][0];
 	$postCont = $fetched_posts[$i][1];

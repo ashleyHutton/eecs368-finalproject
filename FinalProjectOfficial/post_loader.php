@@ -24,6 +24,7 @@ if($result = $db->query($postQuery)){
 		}
 	}
 	$result->free();
+	$result2->free();
 }
 $fetched_likes = array();
 if($result = $db->query($likeQuery)){
@@ -32,6 +33,10 @@ if($result = $db->query($likeQuery)){
 	}
 	$result->free();
 }
+usort($fetched_posts, function ($elem1, $elem2) {
+     return strcmp($elem2[3], $elem1[3]);
+});
+
 for($i = 0; $i < sizeof($fetched_posts); $i++){
 	$posterId = $fetched_posts[$i][0];
 	$postCont = $fetched_posts[$i][1];
