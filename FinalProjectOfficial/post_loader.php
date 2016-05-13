@@ -72,9 +72,8 @@ if(isset($_POST['ID_filter'])){ //Here we check if we are selecting only a certa
 			$val = 1;
 			$color = "#7DF59B";
 		}
-		echo $user_id;
 		$formated_post = "
-		<div class='post_area'>
+		<div class='post_area'> Post ID: 
 			$thisPostID
 			<div>Author: <label>$posterId</label></div>
 			<div class='post_content'>
