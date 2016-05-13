@@ -16,6 +16,7 @@
 		else {
 			//Inserts post into the database table.
 			$sql = "INSERT INTO Posts (author_id, content) VALUES ( '$login_session','$blog_post')";
+			$db->query($sql);
 		}
 	}
 	echo  "<input id='myid' type='hidden' value='".$user_id."'>";
