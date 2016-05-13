@@ -37,3 +37,19 @@ li{
 .nav{
 	float: right;
 }
+.post_area{
+	align-content: center;
+	width: 100%;
+	background-color:rgb(148, 172, 196);
+	color:white;
+	padding:20px;
+	margin-bottom: 10px;
+}
+.post_content{
+	align-self: center;
+	width: 90%;
+	background-color:rgb(59, 70, 98);
+	color:white;
+	padding:20px;
+	word-wrap: break-word;
+}

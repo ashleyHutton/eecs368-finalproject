@@ -10,13 +10,10 @@ if(isset($_POST['signup_button'])){
 	//prevents code injection
 	$usr = mysqli_real_escape_string($db,$_POST['username']);
 	$pass = mysqli_real_escape_string($db,$_POST['password']);
-	//echo $usr . " " .$pass; //ucomment to check the POST values for usrname and pass
-		//need a method to check if username and password are valid for registration, with a boolean return
+
+	//If the new username or password are empty strings then we display an error, otherwise we attempt
+	//we insert it into the User Table.
 	if($usr != "" && $pass != ""){
-		if ($db->connect_errno){
-			printf("Connection Failed: %s\n", $db->connect_error);
-			exit();
-		}
 		$checkDuplicate = $db->query("SELECT UserName FROM BlogUsers WHERE UserName='$usr'");
 		if ($checkDuplicate->num_rows === 0){
 			$sql = "INSERT INTO BlogUsers (UserName, Password, date_created) VALUES ('$usr','$pass',NOW())";
@@ -26,9 +23,6 @@ if(isset($_POST['signup_button'])){
 			else {
 				echo "Error: " . $sql . "<br>" . mysqli_error($db);
 			}
-		}
-		else {
-			echo "<script>alert('Username already taken');</script>";
 		}
 		mysqli_close($db);
 	}

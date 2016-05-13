@@ -5,19 +5,20 @@
 	if(isset($_SESSION['login_user'])!=""){
 		header("location: successlog.php");
 	}
-	if($_SERVER["REQUEST_METHOD"] == "POST") {
-		//prevents code injection
-		$usr = mysqli_real_escape_string($db,$_POST['username']);
-		$pass = mysqli_real_escape_string($db,$_POST['password']);
-		$myquery = $db->query("SELECT UserName FROM BlogUsers WHERE UserName = '$usr' and Password = '$pass'");
-		if ($myquery->num_rows === 1){
-			//echo "<script>alert('Success!');</script>";
-			$_SESSION['login_user'] = $usr;
-			header("location: successlog.php");//When user is loged they are sent to succeslog.php
-		}
-		else {
-			echo "<script>alert('Invalid Login');</script>";
-		}
+	//prevents code injection
+	$usr = mysqli_real_escape_string($db,$_POST['username']);
+	$pass = mysqli_real_escape_string($db,$_POST['password']);
+
+	//Checks if the user and password are in the same row in the user table.
+	$myquery = $db->query("SELECT UserName FROM BlogUsers WHERE UserName = '$usr' and Password = '$pass'");
+	//If the result return one row then the user exists and has correct password, he is redirected
+	//to the succeslog page. Else we display invalid login message.
+	if ($myquery->num_rows === 1){
+		$_SESSION['login_user'] = $usr;
+		header("location: successlog.php");//When user is loged they are sent to succeslog.php
+	}
+	else {
+		echo "<script>alert('Invalid Login');</script>";
 	}
 ?>
 

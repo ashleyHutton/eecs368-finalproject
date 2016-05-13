@@ -1,3 +1,5 @@
+//This method gets called when the liking button is clicked, and posts values to the
+//vote.php file, upon completition the posts are reloaded.
 $(document).on("click", ":button[name='vote']", function(e){
 	console.log($(this).val());
 	var voteValue = $(this).val();

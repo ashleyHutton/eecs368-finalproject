@@ -4,23 +4,18 @@
 	if(isset($_SESSION['login_user'])==""){
 		header("location: login.php");
 	}
+	//Checking if there is a posting attempt
 	if(isset($_POST['content'])){
 		//prevents code injection
 		$blog_post = $_POST['content'];
 		$blog_post = htmlspecialchars($blog_post);
+		//Checks if post attempt is empty.
 		if ($blog_post == ""){
 			echo "<script>alert('Post cannot be blank!');</script>";
 		}
 		else {
+			//Inserts post into the database table.
 			$sql = "INSERT INTO Posts (author_id, content) VALUES ( '$login_session','$blog_post')";
-			if ($db->query($sql) === TRUE) {
-				//echo "<script>alert('Success!');</script>";
-				//echo "Success!";
-			}
-			else {
-				//echo "<script>alert('Error!');</script>";
-				//echo "Error: " . $sql . "<br>" . mysqli_error($db);
-			}
 		}
 	}
 	echo  "<input id='myid' type='hidden' value='".$user_id."'>";

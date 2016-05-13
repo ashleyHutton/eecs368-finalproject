@@ -1,7 +1,10 @@
 <?php
 include ("session.php");
+//like and post id values get assigned
 $like = $_POST['vote'];
 $post_id = $_POST['post_id'];
+
+//Here we check if the user has already liked a posts so that he isn't able to double vote.
 $prevLike = "SELECT * FROM post_like WHERE (post_id = $post_id AND uid = $user_id)";
 $result = $db->query($prevLike);
 $counted = mysqli_num_rows($result);
