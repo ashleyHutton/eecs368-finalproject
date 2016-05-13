@@ -17,18 +17,14 @@
 			<div class="nav">
 				<ul>
 					<li><a href="login.php">Login</a></li>
-					<li><a href="createlogin.php"> Create New Login</a></li>
-					<!--
-					if you use php you dont need direct link to the website
-					<li><a href="http://people.eecs.ku.edu/~cbernosk/FinalProject/login.html"> Login </a></li>
-					<li><a href="http://people.eecs.ku.edu/~cbernosk/FinalProject/createlogin.html"> Create New Login</a></li>
-					-->
+					<li><a href="createlogin.php"> Create New Login </a></li>
 				</ul>
 			</div>
 		</div>
 	</div>
 
 	<div class="container">
+
 		<div class="content">
 			<div id="thread" class="postThread">
 

@@ -80,7 +80,8 @@ if(isset($_POST['ID_filter'])){ //Here we check if we are selecting only a certa
 			<div class='post_content'>
 				$postCont
 				<div class = 'buttons'>
-				<button class = 'vote' value=". $val ." data-postID=". $thisPostID ." type= 'submit' name='vote' style='background-color:$color'> ". $vote ."</button>
+				<button class = 'vote' value=". $val ." data-postID=". $thisPostID ." type= 'submit' name='vote' style='background-color:$color;border:
+				none; border-radius: 12px; '> ". $vote ."</button>
 				<div> Like: <label>$likeCount</label></div>
 			</div>
 			</div>
