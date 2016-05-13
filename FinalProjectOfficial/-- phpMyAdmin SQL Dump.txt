@@ -1,0 +1,116 @@
+-- phpMyAdmin SQL Dump
+-- version 3.4.9
+-- http://www.phpmyadmin.net
+--
+-- Host: localhost
+-- Generation Time: May 13, 2016 at 02:58 PM
+-- Server version: 5.1.73
+-- PHP Version: 5.3.3
+
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
+SET time_zone = "+00:00";
+
+--
+-- Database: `ahutton`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BlogPosts`
+--
+
+CREATE TABLE IF NOT EXISTS `BlogPosts` (
+  `post_id` int(11) NOT NULL AUTO_INCREMENT,
+  `author_id` int(11) DEFAULT NULL,
+  `content` text,
+  PRIMARY KEY (`post_id`),
+  KEY `author_id` (`author_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=15 ;
+
+--
+-- Dumping data for table `BlogPosts`
+--
+
+INSERT INTO `BlogPosts` (`post_id`, `author_id`, `content`) VALUES
+(1, 0, '\r\n				this is a test post'),
+(2, 0, '\r\n				test post for ashley'),
+(3, 0, '\r\n				asdf'),
+(4, 0, '\r\n				asdf'),
+(5, 0, 'asdf\r\n				'),
+(6, 3, '\r\n				Testing post Fix'),
+(7, 3, '\r\n				Testing Fix '),
+(8, 3, '\r\n				Testing input'),
+(9, 3, '\r\n				Testing Fix'),
+(10, 3, '\r\n				testing'),
+(11, 3, '\r\n				"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."'),
+(12, 3, '\r\n				&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;'),
+(13, 3, '\r\n				&quot;Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.&quot;'),
+(14, 0, '\r\n				post ');
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `BlogUsers`
+--
+
+CREATE TABLE IF NOT EXISTS `BlogUsers` (
+  `UserName` varchar(255) NOT NULL,
+  `Password` varchar(255) NOT NULL,
+  `date_created` datetime DEFAULT NULL,
+  `ID` int(11) NOT NULL AUTO_INCREMENT,
+  PRIMARY KEY (`ID`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=9 ;
+
+--
+-- Dumping data for table `BlogUsers`
+--
+
+INSERT INTO `BlogUsers` (`UserName`, `Password`, `date_created`, `ID`) VALUES
+('ashley', 'password', '2016-05-05 12:52:19', 1),
+('notashley', 'password', '2016-05-05 12:53:15', 2),
+('diego', 'soliz', '2016-05-06 17:58:01', 3),
+('chrisbernosky', 'test', '2016-05-08 04:28:51', 4),
+('chris', 'test', '2016-05-11 20:21:24', 5),
+('matt', 'test', '2016-05-12 16:44:12', 6),
+('ashleyh', 'password', '2016-05-13 14:16:16', 7),
+('368', '368', '2016-05-13 14:36:54', 8);
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `post_like`
+--
+
+CREATE TABLE IF NOT EXISTS `post_like` (
+  `like_id` int(11) NOT NULL AUTO_INCREMENT,
+  `post_id` int(11) DEFAULT NULL,
+  `uid` int(11) NOT NULL,
+  PRIMARY KEY (`like_id`),
+  KEY `uid` (`uid`),
+  KEY `post_id` (`post_id`)
+) ENGINE=MyISAM  DEFAULT CHARSET=latin1 AUTO_INCREMENT=208 ;
+
+--
+-- Dumping data for table `post_like`
+--
+
+INSERT INTO `post_like` (`like_id`, `post_id`, `uid`) VALUES
+(206, 15, 3),
+(196, 14, 7),
+(181, 9, 3),
+(195, 13, 7),
+(190, 1, 5),
+(188, 11, 5),
+(192, 13, 3),
+(193, 14, 3),
+(197, 15, 7),
+(198, 1, 7),
+(199, 11, 7),
+(200, 9, 7),
+(201, 16, 7),
+(202, 3, 7),
+(203, 5, 7),
+(204, 10, 7),
+(205, 12, 7),
+(207, 18, 8);
